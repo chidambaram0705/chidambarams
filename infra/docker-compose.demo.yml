@@ -54,7 +54,10 @@ services:
 
   storefront:
     build:
-      context: ../storefront
+      # Path is relative to this file's folder (infra/), not the repo root.
+      # Expects `storefront` cloned as a sibling of this repo's own checkout,
+      # e.g. ~/chidambarams/apps/storefront next to ~/chidambarams/apps/chidambarams.
+      context: ../../storefront
       args:
         NEXT_PUBLIC_SALEOR_API_URL: https://api.chidambarams.in/graphql/
         NEXT_PUBLIC_STOREFRONT_URL: https://shop.chidambarams.in
