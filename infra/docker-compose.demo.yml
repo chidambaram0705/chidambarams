@@ -2,7 +2,8 @@
 # TLS/routing is handled by Nginx on the host (see docs/local-setup.md), so no
 # reverse proxy container is defined here — every service binds to 127.0.0.1 only.
 #
-# Requires infra/.env.demo (gitignored) with SECRET_KEY and POSTGRES_PASSWORD.
+# Requires infra/.env.demo (gitignored) with SECRET_KEY, POSTGRES_PASSWORD,
+# and RSA_PRIVATE_KEY — see infra/.env.demo.example for how to generate each.
 # Usage: docker compose -f infra/docker-compose.demo.yml --env-file infra/.env.demo up -d
 
 x-saleor-env: &saleor-env
@@ -27,6 +28,11 @@ services:
     depends_on: [db, cache]
     volumes:
       - saleor-media:/app/media
+    # RSA_PRIVATE_KEY is multi-line PEM — loaded via env_file (raw passthrough)
+    # rather than ${RSA_PRIVATE_KEY} interpolation, which would splice literal
+    # newlines into this YAML file and corrupt it.
+    env_file:
+      - .env.demo
     environment:
       <<: *saleor-env
     ports:
@@ -40,6 +46,8 @@ services:
     depends_on: [cache, mailpit]
     volumes:
       - saleor-media:/app/media
+    env_file:
+      - .env.demo
     environment:
       <<: *saleor-env
 
