@@ -30,7 +30,11 @@ services:
     networks: [saleor-backend-tier]
     depends_on: [db, cache]
     volumes:
-      - saleor-media:/app/media
+      # Bind mount, not a named volume — Nginx on the host serves /media/
+      # directly out of this folder (see docs/local-setup.md), and reaching
+      # into Docker's internal volume storage for that isn't worth the
+      # permission fights or the blast radius on /var/lib/docker.
+      - ./media:/app/media
     # RSA_PRIVATE_KEY is multi-line PEM — loaded via env_file (raw passthrough)
     # rather than ${RSA_PRIVATE_KEY} interpolation, which would splice literal
     # newlines into this YAML file and corrupt it.
@@ -49,7 +53,11 @@ services:
     networks: [saleor-backend-tier]
     depends_on: [cache, mailpit]
     volumes:
-      - saleor-media:/app/media
+      # Bind mount, not a named volume — Nginx on the host serves /media/
+      # directly out of this folder (see docs/local-setup.md), and reaching
+      # into Docker's internal volume storage for that isn't worth the
+      # permission fights or the blast radius on /var/lib/docker.
+      - ./media:/app/media
     env_file:
       - .env.demo
     environment:
@@ -108,7 +116,6 @@ services:
 volumes:
   saleor-db:
   saleor-cache:
-  saleor-media:
 
 networks:
   saleor-backend-tier:
