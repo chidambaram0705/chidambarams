@@ -36,7 +36,8 @@ services:
     environment:
       <<: *saleor-env
     ports:
-      - "127.0.0.1:8000:8000"
+      # host 8001, not 8000 — the getflowersdaily app already owns 8000 on the VPS
+      - "127.0.0.1:8001:8000"
 
   worker:
     image: ghcr.io/saleor/saleor:3.23
