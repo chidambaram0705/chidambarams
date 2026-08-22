@@ -1,0 +1,100 @@
+# Public VM stack for chidambarams.in — Saleor (official images) + storefront build.
+# TLS/routing is handled by Nginx on the host (see docs/local-setup.md), so no
+# reverse proxy container is defined here — every service binds to 127.0.0.1 only.
+#
+# Requires infra/.env.demo (gitignored) with SECRET_KEY and POSTGRES_PASSWORD.
+# Usage: docker compose -f infra/docker-compose.demo.yml --env-file infra/.env.demo up -d
+
+x-saleor-env: &saleor-env
+  DATABASE_URL: postgres://saleor:${POSTGRES_PASSWORD}@db/saleor
+  CACHE_URL: redis://cache:6379/0
+  CELERY_BROKER_URL: redis://cache:6379/1
+  SECRET_KEY: ${SECRET_KEY}
+  DEFAULT_FROM_EMAIL: noreply@chidambarams.in
+  EMAIL_URL: smtp://mailpit:1025
+  DEBUG: "False"
+  ALLOWED_HOSTS: api.chidambarams.in
+  ALLOWED_CLIENT_HOSTS: shop.chidambarams.in,admin.chidambarams.in
+  ALLOWED_GRAPHQL_ORIGINS: https://shop.chidambarams.in,https://admin.chidambarams.in
+  DASHBOARD_URL: https://admin.chidambarams.in/
+  DEFAULT_CHANNEL_SLUG: default-channel
+
+services:
+  api:
+    image: ghcr.io/saleor/saleor:3.23
+    restart: unless-stopped
+    networks: [saleor-backend-tier]
+    depends_on: [db, cache]
+    volumes:
+      - saleor-media:/app/media
+    environment:
+      <<: *saleor-env
+    ports:
+      - "127.0.0.1:8000:8000"
+
+  worker:
+    image: ghcr.io/saleor/saleor:3.23
+    command: celery -A saleor --app=saleor.celeryconf:app worker --loglevel=info -B
+    restart: unless-stopped
+    networks: [saleor-backend-tier]
+    depends_on: [cache, mailpit]
+    volumes:
+      - saleor-media:/app/media
+    environment:
+      <<: *saleor-env
+
+  dashboard:
+    image: ghcr.io/saleor/saleor-dashboard:3.23
+    restart: unless-stopped
+    networks: [saleor-backend-tier]
+    environment:
+      API_URL: https://api.chidambarams.in/graphql/
+    ports:
+      - "127.0.0.1:9000:80"
+
+  storefront:
+    build:
+      context: ../storefront
+      args:
+        NEXT_PUBLIC_SALEOR_API_URL: https://api.chidambarams.in/graphql/
+        NEXT_PUBLIC_STOREFRONT_URL: https://shop.chidambarams.in
+        NEXT_PUBLIC_CHECKOUT_URL: https://shop.chidambarams.in/checkout
+        NEXT_PUBLIC_DEFAULT_CHANNEL: default-channel
+    restart: unless-stopped
+    networks: [saleor-backend-tier]
+    depends_on: [api]
+    ports:
+      - "127.0.0.1:3000:3000"
+
+  db:
+    image: library/postgres:15-alpine
+    restart: unless-stopped
+    networks: [saleor-backend-tier]
+    volumes:
+      - saleor-db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: saleor
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+  cache:
+    image: valkey/valkey:8.1-alpine
+    restart: unless-stopped
+    networks: [saleor-backend-tier]
+    volumes:
+      - saleor-cache:/data
+
+  mailpit:
+    image: axllent/mailpit
+    restart: unless-stopped
+    networks: [saleor-backend-tier]
+    ports:
+      - "127.0.0.1:8025:8025"
+
+volumes:
+  saleor-db:
+  saleor-cache:
+  saleor-media:
+
+networks:
+  saleor-backend-tier:
+    driver: bridge
