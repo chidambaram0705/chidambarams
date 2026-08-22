@@ -18,6 +18,9 @@ x-saleor-env: &saleor-env
   ALLOWED_CLIENT_HOSTS: shop.chidambarams.in,admin.chidambarams.in
   ALLOWED_GRAPHQL_ORIGINS: https://shop.chidambarams.in,https://admin.chidambarams.in
   DASHBOARD_URL: https://admin.chidambarams.in/
+  # Without this, thumbnail/media URLs built outside a request context (e.g. by
+  # the worker) fall back to the django_site seed value of localhost:8000.
+  PUBLIC_URL: https://api.chidambarams.in
   DEFAULT_CHANNEL_SLUG: default-channel
 
 services:
