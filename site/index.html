@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chidambaram Subramanian — QA Architect</title>
+<meta name="description" content="QA Architect and Quality Engineering leader — 19+ years across enterprise test architecture, AI-enabled test automation, and Agile delivery.">
+<style>
+  :root {
+    --bg: #0b1220;
+    --bg-panel: #ffffff;
+    --ink: #1a2233;
+    --ink-soft: #4b5768;
+    --accent: #2f6fed;
+    --accent-soft: #e8effe;
+    --border: #e4e8f0;
+    --hero-bg: #0b1220;
+    --hero-ink: #f4f7fc;
+    --hero-soft: #b7c2d8;
+    --pill-bg: #131c30;
+    --pill-ink: #cfd9ec;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg-panel);
+    line-height: 1.55;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+
+  header.hero {
+    background: var(--hero-bg);
+    color: var(--hero-ink);
+    padding: 64px 0 48px;
+  }
+  header.hero .eyebrow {
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    font-size: .8rem;
+    margin-bottom: 12px;
+  }
+  header.hero h1 { font-size: 2.4rem; margin: 0 0 8px; letter-spacing: -0.01em; }
+  header.hero .role { font-size: 1.15rem; color: var(--hero-soft); margin-bottom: 20px; }
+  header.hero p.tagline { max-width: 640px; color: var(--hero-soft); font-size: 1.02rem; margin-bottom: 28px; }
+  .contact-row { display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center; font-size: .95rem; }
+  .contact-row a { color: var(--hero-ink); border-bottom: 1px solid rgba(244,247,252,.3); }
+  .contact-row a:hover { border-color: var(--hero-ink); text-decoration: none; }
+  .contact-row .loc { color: var(--hero-soft); }
+
+  nav.jump {
+    background: var(--pill-bg);
+    border-top: 1px solid rgba(255,255,255,.08);
+  }
+  nav.jump .wrap { display: flex; gap: 22px; flex-wrap: wrap; padding: 12px 24px; }
+  nav.jump a { color: var(--pill-ink); font-size: .88rem; font-weight: 500; }
+  nav.jump a:hover { color: #fff; text-decoration: none; }
+
+  section { padding: 52px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+  h2 { font-size: 1.4rem; margin: 0 0 24px; letter-spacing: -0.01em; }
+
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin-top: 8px; }
+  .stat { background: var(--accent-soft); border-radius: 10px; padding: 18px 16px; }
+  .stat .num { font-size: 1.6rem; font-weight: 700; color: var(--accent); }
+  .stat .label { font-size: .85rem; color: var(--ink-soft); margin-top: 4px; }
+
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .pill { background: var(--accent-soft); color: var(--accent); font-size: .82rem; font-weight: 600; padding: 6px 12px; border-radius: 999px; }
+
+  .skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+  .skill-cat h3 { font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-soft); margin: 0 0 8px; }
+  .skill-cat p { margin: 0; font-size: .92rem; }
+
+  .job { padding: 20px 0; border-top: 1px solid var(--border); }
+  .job:first-of-type { border-top: none; padding-top: 0; }
+  .job-head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; align-items: baseline; }
+  .job-head .title { font-weight: 700; font-size: 1.02rem; }
+  .job-head .dates { font-size: .85rem; color: var(--ink-soft); white-space: nowrap; }
+  .job .company { color: var(--accent); font-weight: 600; font-size: .92rem; margin: 2px 0 10px; }
+  .job ul { margin: 0; padding-left: 20px; font-size: .93rem; color: var(--ink-soft); }
+  .job li { margin-bottom: 6px; }
+  .job li:last-child { margin-bottom: 0; }
+
+  .demo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .demo-card { border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+  .demo-card .kind { font-size: .75rem; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); margin-bottom: 6px; }
+  .demo-card a.link { font-weight: 700; font-size: 1rem; }
+  .demo-card .note { font-size: .82rem; color: var(--ink-soft); margin-top: 6px; }
+  .demo-intro { max-width: 680px; color: var(--ink-soft); margin-bottom: 24px; }
+
+  .edu-item { margin-bottom: 14px; }
+  .edu-item .deg { font-weight: 700; }
+  .edu-item .school { color: var(--ink-soft); font-size: .92rem; }
+
+  footer { padding: 32px 0 48px; text-align: center; color: var(--ink-soft); font-size: .85rem; }
+
+  @media (max-width: 600px) {
+    header.hero { padding: 44px 0 32px; }
+    header.hero h1 { font-size: 1.9rem; }
+    section { padding: 38px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Open to Senior Management / Senior Architect roles — Bengaluru &amp; Chennai</div>
+    <h1>Chidambaram Subramanian</h1>
+    <div class="role">QA Architect &amp; Quality Engineering Leader</div>
+    <p class="tagline">19+ years driving engineering excellence, test automation modernization, Agile transformation,
+      and enterprise-wide quality strategy — most recently architecting Generative AI-powered self-healing test
+      automation and AI-assisted engineering governance across 14 Agile delivery squads.</p>
+    <div class="contact-row">
+      <a href="mailto:chidambaram0705@gmail.com">chidambaram0705@gmail.com</a>
+      <a href="https://www.linkedin.com/in/chidambaram-subramanian/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/chidambaram0705/chidambarams" target="_blank" rel="noopener">GitHub — this project's source</a>
+      <span class="loc">Bengaluru, India</span>
+    </div>
+  </div>
+</header>
+
+<nav class="jump">
+  <div class="wrap">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#demo">Live QA Platform</a>
+    <a href="#education">Education</a>
+  </div>
+</nav>
+
+<section id="about">
+  <div class="wrap">
+    <h2>Profile</h2>
+    <p>Currently driving enterprise quality strategy across 14 Agile squads at TCS, partnering with Engineering,
+      Product, BA and DevOps teams on quality governance, release assurance and engineering standards. Combines deep
+      expertise in Enterprise Test Architecture, Intelligent Test Automation, AI/Generative AI, Engineering
+      Governance and Agile Delivery with an MBA in Business Analytics and advanced specialization in AI &amp; ML —
+      enabling technology organizations to modernize quality engineering and accelerate digital transformation.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="num">19+ yrs</div><div class="label">Quality engineering experience</div></div>
+      <div class="stat"><div class="num">60%</div><div class="label">Automation maintenance effort cut via GenAI self-healing tests</div></div>
+      <div class="stat"><div class="num">80%</div><div class="label">Manual code-review effort cut via AI-assisted validation</div></div>
+      <div class="stat"><div class="num">14</div><div class="label">Agile squads under current quality governance</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2>Experience</h2>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="title">QA Architect | Associate Consultant – Quality Engineering</span>
+        <span class="dates">Mar 2022 – Present</span>
+      </div>
+      <div class="company">Tata Consultancy Services (TCS), Bengaluru</div>
+      <ul>
+        <li>Spearheaded enterprise-wide Quality Engineering transformation for strategic UK financial-services clients across 14 Agile delivery squads, aligning engineering standards, quality objectives, release assurance and SDLC governance.</li>
+        <li>Architected a Generative AI-powered self-healing testing ecosystem, reducing automation maintenance effort by 60%, and deployed an AI-enabled Test Data Management platform automating reusable test-data generation.</li>
+        <li>Embedded AI-assisted validation into automation pipelines, reducing manual code-review effort by 80%.</li>
+        <li>Institutionalized executive-level quality governance through real-time dashboards covering sprint health, testing compliance, quality trends and release readiness.</li>
+        <li>Led the legacy-to-modern migration from Selenium and Cucumber to Playwright, establishing a fast, resilient end-to-end automation framework that eliminated flakiness across release pipelines.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="title">Senior Project Lead – QA</span>
+        <span class="dates">Sep 2021 – Mar 2022</span>
+      </div>
+      <div class="company">V2 Solutions, Bengaluru</div>
+      <ul>
+        <li>Stabilized Quality Engineering operations for CrossCountry Mortgage, leading an 8-member team across functional, regression and automation testing.</li>
+        <li>Established an end-to-end QA governance model spanning test planning, execution, reporting and production sign-off.</li>
+        <li>Engineered a Cypress-based automation solution and reusable Postman API validation frameworks, standardizing testing practices across critical workflows.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="title">QA Architect | Test Architect</span>
+        <span class="dates">Jun 2018 – Aug 2021</span>
+      </div>
+      <div class="company">Wipro Technologies — Mercedes-Benz Research &amp; Development India</div>
+      <ul>
+        <li>Architected enterprise-scale automation solutions for connected automotive platforms across functional, integration and regression testing.</li>
+        <li>Re-engineered complex Ranorex automation suites, improving execution stability, localization support and long-term maintainability.</li>
+        <li>Built a centralized Python Flask orchestration platform to automate test execution, monitoring and reporting across distributed laboratory environments.</li>
+        <li>Championed automation capability development through technical mentoring and structured enablement programmes.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="title">Lead QA Engineer</span>
+        <span class="dates">Aug 2011 – May 2018</span>
+      </div>
+      <div class="company">KNOEMA IT Solutions Pvt. Ltd., Bengaluru</div>
+      <ul>
+        <li>Built and scaled the organization's Quality Engineering function from the ground up, partnering directly with the CTO on quality standards, governance and automation strategy within a high-growth product startup.</li>
+        <li>Engineered scalable automation ecosystems across web, API, mobile and performance testing using Selenium, SoapUI, Appium and JMeter.</li>
+        <li>Created engineering productivity utilities — API Validation Tool, Link Checker, Visual Comparison Tool, Load Testing Suite — reducing manual effort and improving testing effectiveness.</li>
+        <li>Advised the CTO on engineering quality, release readiness and process optimization.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="title">Test Engineer</span>
+        <span class="dates">Jul 2010 – Jul 2011</span>
+      </div>
+      <div class="company">ABCO Advisory Services India Pvt. Ltd., Chennai</div>
+      <ul>
+        <li>Executed software testing and quality validation activities, contributing to functional assurance, defect identification and delivery readiness.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="title">Software Engineer</span>
+        <span class="dates">Feb 2007 – Jul 2010</span>
+      </div>
+      <div class="company">Adea Technologies Pvt. Ltd., Bengaluru</div>
+      <ul>
+        <li>Developed and supported software solutions, building foundational engineering expertise across application development, testing and technology delivery.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>Core Competencies</h2>
+    <div class="pills">
+      <span class="pill">Quality Assurance Strategy</span>
+      <span class="pill">Agile Transformation</span>
+      <span class="pill">Risk Management Frameworks</span>
+      <span class="pill">SDLC Governance</span>
+      <span class="pill">Test Automation Architecture</span>
+      <span class="pill">Engineering Governance Models</span>
+      <span class="pill">Stakeholder Engagement</span>
+      <span class="pill">Performance Testing</span>
+      <span class="pill">Continuous Improvement</span>
+      <span class="pill">Data-Driven Decision Making</span>
+    </div>
+
+    <h2 style="margin-top:36px;">Technical Skills</h2>
+    <div class="skill-grid">
+      <div class="skill-cat">
+        <h3>AI &amp; Machine Learning</h3>
+        <p>Azure OpenAI, GPT-4o, Claude, LangChain, RAG, LLM Testing &amp; Evaluation (hallucination, accuracy, prompt security), Prompt Engineering, Qdrant, ML, NLP, CNN, RNN, LSTM, Time-Series Forecasting</p>
+      </div>
+      <div class="skill-cat">
+        <h3>Quality Engineering &amp; Automation</h3>
+        <p>Selenium, Playwright, Cypress, Ranorex, Appium, UFT/QTP, SpecFlow, Cucumber, Postman, SoapUI, JMeter</p>
+      </div>
+      <div class="skill-cat">
+        <h3>Programming Languages</h3>
+        <p>Python, C#, Java, JavaScript, PHP</p>
+      </div>
+      <div class="skill-cat">
+        <h3>Cloud &amp; DevOps</h3>
+        <p>Microsoft Azure, AWS, Google Cloud Platform, Jenkins, TeamCity, GitHub, Git, CI/CD</p>
+      </div>
+      <div class="skill-cat">
+        <h3>Testing &amp; Collaboration Tools</h3>
+        <p>Jira, Zephyr, Confluence, HP ALM</p>
+      </div>
+      <div class="skill-cat">
+        <h3>Automation &amp; Engineering</h3>
+        <p>API/UI/Functional/Regression/Integration/Mobile Testing, Test Data Management, Self-Healing Automation, AI-Assisted Testing, Test Orchestration, Quality Dashboards</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="demo">
+  <div class="wrap">
+    <h2>Live QA Platform Demo</h2>
+    <p class="demo-intro">This domain also hosts a working, end-to-end demonstration of the practices above: a real
+      open-source e-commerce platform (<a href="https://github.com/saleor/saleor" target="_blank" rel="noopener">Saleor</a> —
+      GraphQL API, Next.js storefront, React dashboard), run unmodified, with a complete quality engineering system
+      built around it — test strategy, multi-layer automation, AI-driven test generation from Jira, LLM evaluation
+      for an embedded RAG chatbot, security and performance gates, and release readiness reporting.</p>
+
+    <div class="demo-grid">
+      <div class="demo-card">
+        <div class="kind">Storefront</div>
+        <a class="link" href="https://shop.chidambarams.in" target="_blank" rel="noopener">shop.chidambarams.in</a>
+        <div class="note">Customer-facing Next.js storefront</div>
+      </div>
+      <div class="demo-card">
+        <div class="kind">Admin Dashboard</div>
+        <a class="link" href="https://admin.chidambarams.in" target="_blank" rel="noopener">admin.chidambarams.in</a>
+        <div class="note">React admin — demo account available on request</div>
+      </div>
+      <div class="demo-card">
+        <div class="kind">GraphQL API</div>
+        <a class="link" href="https://api.chidambarams.in/graphql/" target="_blank" rel="noopener">api.chidambarams.in/graphql/</a>
+        <div class="note">Saleor's GraphQL schema, live and queryable</div>
+      </div>
+      <div class="demo-card">
+        <div class="kind">Dev Email Capture</div>
+        <a class="link" href="https://mail.chidambarams.in" target="_blank" rel="noopener">mail.chidambarams.in</a>
+        <div class="note">Mailpit — protected, credentials on request</div>
+      </div>
+      <div class="demo-card">
+        <div class="kind">Source Code</div>
+        <a class="link" href="https://github.com/chidambaram0705/chidambarams" target="_blank" rel="noopener">GitHub repository</a>
+        <div class="note">Infra, docs, and the full test suite as it's built out</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h2>Education</h2>
+    <div class="edu-item">
+      <div class="deg">Post Graduate Diploma in Artificial Intelligence &amp; Machine Learning</div>
+      <div class="school">International Institute of Information Technology, Bangalore (IIIT-B) — 2026</div>
+    </div>
+    <div class="edu-item">
+      <div class="deg">Master of Business Administration (Business Analytics)</div>
+      <div class="school">Golden Gate University, San Francisco — 2024</div>
+    </div>
+    <div class="edu-item">
+      <div class="deg">Bachelor of Engineering (Instrumentation Technology)</div>
+      <div class="school">Dr. Ambedkar Institute of Technology, Visvesvaraya Technological University — 2006</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Chidambaram Subramanian · Bengaluru, India · <a href="mailto:chidambaram0705@gmail.com">chidambaram0705@gmail.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
