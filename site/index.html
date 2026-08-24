@@ -63,6 +63,13 @@
   nav.jump a { color: var(--pill-ink); font-size: .88rem; font-weight: 500; }
   nav.jump a:hover { color: #fff; text-decoration: none; }
 
+  section.credentials { padding: 28px 0; border-bottom: 1px solid var(--border); background: var(--accent-soft); }
+  .credential-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+  .credential-card { display: flex; align-items: center; gap: 16px; background: var(--bg-panel); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+  .credential-card img { height: 44px; width: auto; max-width: 110px; object-fit: contain; flex-shrink: 0; }
+  .credential-card .deg { font-weight: 700; font-size: .92rem; }
+  .credential-card .school { font-size: .82rem; color: var(--ink-soft); margin-top: 2px; }
+
   section { padding: 52px 0; border-bottom: 1px solid var(--border); }
   section:last-of-type { border-bottom: none; }
   h2 { font-size: 1.4rem; margin: 0 0 24px; letter-spacing: -0.01em; }
@@ -130,6 +137,7 @@
 
 <nav class="jump">
   <div class="wrap">
+    <a href="#credentials">Credentials</a>
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
     <a href="#skills">Skills</a>
@@ -137,6 +145,27 @@
     <a href="#education">Education</a>
   </div>
 </nav>
+
+<section id="credentials" class="credentials">
+  <div class="wrap">
+    <div class="credential-grid">
+      <div class="credential-card">
+        <img src="assets/iiitb-logo.png" alt="International Institute of Information Technology, Bangalore (IIIT-B) logo">
+        <div class="credential-text">
+          <div class="deg">Post Graduate Diploma in Artificial Intelligence &amp; Machine Learning</div>
+          <div class="school">International Institute of Information Technology, Bangalore (IIIT-B) — 2026</div>
+        </div>
+      </div>
+      <div class="credential-card">
+        <img src="assets/ggu-logo.jpg" alt="Golden Gate University logo">
+        <div class="credential-text">
+          <div class="deg">Master of Business Administration (Business Analytics)</div>
+          <div class="school">Golden Gate University, San Francisco — 2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="about">
   <div class="wrap">
